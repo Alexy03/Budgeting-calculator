@@ -26,14 +26,14 @@ function calculateBudget() {
         options: { responsive: true }
     });
 
-      let advice = "";
+          let advice = "";
     if (savings > 10000000) {
         advice = "Mulailah belajar manajemen risiko keuangan, diversifikasi aset, dan investasi properti.";
     } else if (savings > 5000000) {
         advice = "Anda bisa mulai berinvestasi di saham dan obligasi untuk jangka panjang.";
-    } else if (savings > 1000000) {
+    } else if (savings > 500000) {
         advice = "Mulailah belajar investasi emas dan reksadana untuk memaksimalkan tabungan.";
-    } else if (savings >= 400000) {
+    } else if (savings >= 1) {
         advice = "Keuangan stabil, tetap kontrol pengeluaran dan pertimbangkan investasi sederhana.";
     } else {
         // Untuk semua kondisi negatif (−Rp1 ke bawah)
