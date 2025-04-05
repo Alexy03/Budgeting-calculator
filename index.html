@@ -38,4 +38,26 @@
   <input
     type="text"
     id="debt"
-    value="1.500
+    value="1.500.000"
+    oninput="formatRupiah(this)"
+  />
+
+  <label for="other">Biaya Lain-lain (Rp)</label>
+  <input
+    type="text"
+    id="other"
+    value="1.000.000"
+    oninput="formatRupiah(this)"
+  />
+
+  <button onclick="calculateBudget()">Hitung</button>
+
+  <canvas id="budgetChart"></canvas>
+  <div class="summary" id="summary"></div>
+
+  <!-- Chart.js dari CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js" defer></script>
+  <!-- Script utama -->
+  <script src="script.js" defer></script>
+</body>
+</html>
