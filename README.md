@@ -1,4 +1,4 @@
-# 💰 SUP! – Budgeting Calculator 💰
+# 💰 Sup! – Budgeting Calculator 💰
 
 Aplikasi budgeting sederhana berbasis web untuk menghitung pengeluaran dan tabungan bulanan.  
 Bisa dipakai buat ngatur keuangan biar makin stabil! 🚀
