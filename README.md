@@ -15,9 +15,6 @@ Bisa dipakai buat ngatur keuangan biar makin stabil! 🚀
 3. **Klik "Hitung"** dan lihat hasil perhitungan  
 4. **Cek grafik & saran finansial** buat pengelolaan keuangan yang lebih baik  
 
-## 📷 Tampilan
-![Screenshot](https://via.placeholder.com/800x400.png?text=Screenshot+SUP!+Budgeting)
-
 ## 🌐 Coba Sekarang!  
 🔗 **[Live Demo di GitHub Pages](https://Alexy03.github.io/Sup!-budgeting/)**
 ---
