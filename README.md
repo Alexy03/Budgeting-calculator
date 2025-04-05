@@ -16,7 +16,7 @@ Bisa dipakai buat ngatur keuangan biar makin stabil! 🚀
 4. **Cek grafik & saran finansial** buat pengelolaan keuangan yang lebih baik  
 
 ## 🌐 Coba Sekarang!  
-🔗 **[Live Demo di GitHub Pages](https://Alexy03.github.io/Sup!-budgeting/)**
+🔗 **[Live Demo di GitHub Pages](https://alexy03.github.io/budgeting-calculator/)**
 ---
 
 ## 🛠️ Teknologi yang Digunakan
