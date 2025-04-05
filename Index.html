@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Budgeting Calculator</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap');
+        body { font-family: 'Montserrat', sans-serif; text-align: center; margin: 20px; }
+        input, button { margin: 10px; padding: 10px; font-size: 16px; display: block; width: 80%; margin-left: auto; margin-right: auto; }
+        button { background-color: #007BFF; color: white; border: none; cursor: pointer; padding: 10px; border-radius: 5px; }
+        canvas { width: 40%; height: auto; margin: auto; display: block; }
+        .summary { 
+            background-color: rgba(173, 216, 230, 0.3); 
+            padding: 20px; 
+            margin-top: 50px; 
+            border-radius: 10px; 
+        }
+    </style>
+</head>
+<body>
+    <label>Pendapatan Bulanan (Rp)</label>
+    <input type="text" id="income" value="10.000.000" oninput="formatRupiah(this)">
+    
+    <label>Pengeluaran Air & Listrik (Rp)</label>
+    <input type="text" id="utilities" value="500.000" oninput="formatRupiah(this)">
+    
+    <label>Pengeluaran Makan (Rp)</label>
+    <input type="text" id="food" value="2.000.000" oninput="formatRupiah(this)">
+    
+    <label>Cicilan (Rp)</label>
+    <input type="text" id="debt" value="1.500.000" oninput="formatRupiah(this)">
+    
+    <label>Biaya Lain-lain (Rp)</label>
+    <input type="text" id="other" value="1.000.000" oninput="formatRupiah(this)">
+    
+    <button onclick="calculateBudget()">Hitung</button>
+    <canvas id="budgetChart"></canvas>
+    
+    <div class="summary" id="summary"></div>
+    
+    <script>
+        function formatRupiah(element) {
+            let value = element.value.replace(/[^0-9]/g, '');
+            element.value = new Intl.NumberFormat("id-ID").format(value);
+        }
+        
+        function calculateBudget() {
+            let income = parseFloat(document.getElementById("income").value.replace(/\./g, ""));
+            let utilities = parseFloat(document.getElementById("utilities").value.replace(/\./g, ""));
+            let food = parseFloat(document.getElementById("food").value.replace(/\./g, ""));
+            let debt = parseFloat(document.getElementById("debt").value.replace(/\./g, ""));
+            let other = parseFloat(document.getElementById("other").value.replace(/\./g, ""));
+            
+            let totalExpenses = utilities + food + debt + other;
+            let savings = income - totalExpenses;
+            let labels = ["Air & Listrik", "Makan", "Cicilan", "Biaya Lain-lain"];
+            let values = [utilities, food, debt, other];
+            
+            let ctx = document.getElementById("budgetChart").getContext("2d");
+            if (window.budgetChart instanceof Chart) { window.budgetChart.destroy(); }
+            window.budgetChart = new Chart(ctx, {
+                type: "pie",
+                data: {
+                    labels: labels,
+                    datasets: [{ data: values, backgroundColor: ["#007BFF", "#28A745", "#FFC107", "#DC3545"] }]
+                },
+                options: { responsive: true }
+            });
+            
+            let advice = "";
+            if (savings > 10000000) {
+                advice = "Mulailah belajar manajemen risiko keuangan, diversifikasi aset, dan investasi properti.";
+            } else if (savings > 5000000) {
+                advice = "Anda bisa mulai berinvestasi di saham dan obligasi untuk jangka panjang.";
+            } else if (savings > 500000) {
+                advice = "Mulailah belajar investasi emas dan reksadana untuk memaksimalkan tabungan.";
+            } else if (savings < -10000000) {
+                advice = "Defisit sangat besar! Segera kurangi pengeluaran besar dan cari tambahan penghasilan.";
+            } else if (savings < -5000000) {
+                advice = "Defisit tinggi! Evaluasi pengeluaran dan cari alternatif penghematan.";
+            } else if (savings < -1000000) {
+                advice = "Defisit! Kurangi pengeluaran yang tidak perlu dan cari peluang penghasilan tambahan.";
+            } else {
+                advice = "Keuangan stabil, tetap kontrol pengeluaran dan pertimbangkan investasi sederhana.";
+            }
+            
+            document.getElementById("summary").innerHTML = `
+                <h3>Kesimpulan</h3>
+                <p>Total Pengeluaran: <b>Rp ${totalExpenses.toLocaleString("id-ID")}</b></p>
+                <p>Tabungan Bulanan: <b>Rp ${savings.toLocaleString("id-ID")}</b></p>
+                <p>${advice}</p>
+            `;
+        }
+    </script>
+</body>
+</html>
